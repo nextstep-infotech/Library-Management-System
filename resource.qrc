@@ -1,0 +1,19 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icon/password1.png</file>
+    <file>icon/user.png</file>
+    <file>icon/borrow.png</file>
+    <file>icon/dashboard.png</file>
+    <file>icon/digital-library.png</file>
+    <file>icon/graduate-avatar.png</file>
+    <file>icon/logout.png</file>
+    <file>icon/menu.png</file>
+    <file>icon/menu-bar.png</file>
+    <file>icon/open-book.png</file>
+    <file>icon/output.png</file>
+    <file>icon/password.png</file>
+    <file>icon/search.png</file>
+    <file>icon/settings.png</file>
+    <file>icon/teacher.png</file>
+  </qresource>
+</RCC>
