@@ -1,11 +1,12 @@
 import sys
 from PyQt5 import QtWidgets
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QTableWidgetItem, QMessageBox, QVBoxLayout
 from PyQt5.QtCore import pyqtSlot
 import pandas as pd
+import numpy as np
 
 from library_management import Ui_MainWindow
 from database import ConnectToMySQL
@@ -13,7 +14,7 @@ from database import ConnectToMySQL
 class MainWindow(QMainWindow):
     username = "nextstep815"
     password = None
-    logged_in = False
+    logged_in = True
     def __init__(self):
         super(MainWindow, self).__init__()
 
@@ -37,12 +38,23 @@ class MainWindow(QMainWindow):
         self.ui.settings_btn_2.clicked.connect(self.on_settings_button_clicked)
         self.ui.add_teacher_btn.clicked.connect(self.add_new_teacher)
         self.ui.login_btn.clicked.connect(self.login_method)
+
+        #Plotting current data in dashboard
         self.figure = plt.figure()
-        self.canvas = FigureCanvas(self.figure)
-        vertical_layout = QVBoxLayout()
-        vertical_layout.addWidget(self.canvas)
-        self.canvas.axes = self.canvas.figure.add_subplot(111)
-        self.setLayout(vertical_layout)
+        self.canvas = FigureCanvasQTAgg(self.figure)
+        self.ax1 = self.figure.add_subplot(111)
+        x = ['A', 'B', 'C', 'D', 'E']
+        y = [10, 7, 4, 9, 3]
+        self.ax1.bar(x, y)
+
+        # Create a second set of axes and plot the line graph
+        self.ax2 = self.ax1.twinx()
+        y2 = [2, 5, 6, 4, 8]
+        self.ax2.plot(x, y2, 'r')
+
+        self.graph_layout = QVBoxLayout()
+        self.graph_layout.addWidget(self.canvas)
+        self.ui.graph_widget.setLayout(self.graph_layout)
 
     def on_login_button_clicked(self):
         self.ui.LMS_label.setText("Login")
