@@ -834,7 +834,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>6</number>
         </property>
         <widget class="QWidget" name="dashboard_page">
          <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -912,7 +912,7 @@ border-radius:10px;</string>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_5">
                         <item>
-                         <widget class="QLabel" name="label">
+                         <widget class="QLabel" name="teachers_count_label">
                           <property name="font">
                            <font>
                             <pointsize>20</pointsize>
@@ -959,7 +959,7 @@ border-radius:10px;</string>
                        </layout>
                       </item>
                       <item>
-                       <widget class="QLabel" name="label_3">
+                       <widget class="QLabel" name="teachers_label">
                         <property name="font">
                          <font>
                           <pointsize>12</pointsize>
@@ -1017,7 +1017,7 @@ border-radius:10px;</string>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_6">
                         <item>
-                         <widget class="QLabel" name="label_4">
+                         <widget class="QLabel" name="students_count_label">
                           <property name="font">
                            <font>
                             <pointsize>20</pointsize>
@@ -1064,7 +1064,7 @@ border-radius:10px;</string>
                        </layout>
                       </item>
                       <item>
-                       <widget class="QLabel" name="label_6">
+                       <widget class="QLabel" name="students_label">
                         <property name="font">
                          <font>
                           <pointsize>12</pointsize>
@@ -1122,7 +1122,7 @@ border-radius:10px;</string>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_7">
                         <item>
-                         <widget class="QLabel" name="label_7">
+                         <widget class="QLabel" name="books_count_label">
                           <property name="font">
                            <font>
                             <pointsize>20</pointsize>
@@ -1169,7 +1169,7 @@ border-radius:10px;</string>
                        </layout>
                       </item>
                       <item>
-                       <widget class="QLabel" name="label_9">
+                       <widget class="QLabel" name="books_label">
                         <property name="font">
                          <font>
                           <pointsize>12</pointsize>
@@ -1227,7 +1227,7 @@ border-radius:10px;</string>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_8">
                         <item>
-                         <widget class="QLabel" name="label_10">
+                         <widget class="QLabel" name="issues_count_label">
                           <property name="font">
                            <font>
                             <pointsize>20</pointsize>
@@ -1274,7 +1274,7 @@ border-radius:10px;</string>
                        </layout>
                       </item>
                       <item>
-                       <widget class="QLabel" name="label_12">
+                       <widget class="QLabel" name="issues_label">
                         <property name="font">
                          <font>
                           <pointsize>12</pointsize>
@@ -3169,6 +3169,274 @@ border-radius: 5px;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_31">
+             <item>
+              <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>10</number>
+               </property>
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item row="2" column="1" colspan="3">
+                <widget class="QLineEdit" name="current_password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Current Password</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" colspan="3">
+                <widget class="QLineEdit" name="new_password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>New Password</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1" colspan="3">
+                <widget class="QLabel" name="reset_password_label">
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Reset Password</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="QPushButton" name="reset_password_btn">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Reset</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1" colspan="3">
+                <widget class="QLineEdit" name="confirm_password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Confirm Password</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2">
+                <spacer name="verticalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="0" column="1">
+                <spacer name="verticalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="3" column="0">
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="3" column="5">
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="4">
+                <widget class="QPushButton" name="show_hide_current_password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(244, 236, 230);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resource.qrc">
+                   <normaloff>:/icon/icon/hide.png</normaloff>:/icon/icon/hide.png</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4">
+                <widget class="QPushButton" name="show_hide_new_password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(244, 236, 230);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resource.qrc">
+                   <normaloff>:/icon/icon/hide.png</normaloff>:/icon/icon/hide.png</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="4">
+                <widget class="QPushButton" name="show_hide_confirm_password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(244, 236, 230);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resource.qrc">
+                   <normaloff>:/icon/icon/hide.png</normaloff>:/icon/icon/hide.png</iconset>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -3205,35 +3473,6 @@ border-radius: 5px</string>
                <property name="spacing">
                 <number>10</number>
                </property>
-               <item row="2" column="2" colspan="3">
-                <widget class="QLineEdit" name="password">
-                 <property name="minimumSize">
-                  <size>
-                   <width>300</width>
-                   <height>35</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>11</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">background-color: rgb(1, 29, 157);
-border-radius: 5px;
-color: rgb(255, 255, 255);</string>
-                 </property>
-                 <property name="echoMode">
-                  <enum>QLineEdit::Password</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Password</string>
-                 </property>
-                </widget>
-               </item>
                <item row="2" column="1">
                 <widget class="QLabel" name="password_icon">
                  <property name="minimumSize">
@@ -3264,6 +3503,19 @@ color: rgb(255, 255, 255);</string>
                   <bool>true</bool>
                  </property>
                 </widget>
+               </item>
+               <item row="0" column="2">
+                <spacer name="verticalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
                <item row="1" column="2" colspan="3">
                 <widget class="QLineEdit" name="username">
@@ -3316,6 +3568,48 @@ color: rgb(255, 255, 255);</string>
                  </property>
                 </widget>
                </item>
+               <item row="1" column="6">
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="2" colspan="3">
+                <widget class="QLineEdit" name="password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Password</string>
+                 </property>
+                </widget>
+               </item>
                <item row="1" column="1">
                 <widget class="QLabel" name="username_icon">
                  <property name="minimumSize">
@@ -3360,19 +3654,6 @@ color: rgb(255, 255, 255);</string>
                  </property>
                 </spacer>
                </item>
-               <item row="0" column="2">
-                <spacer name="verticalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
                <item row="1" column="0">
                 <spacer name="horizontalSpacer_3">
                  <property name="orientation">
@@ -3386,18 +3667,25 @@ color: rgb(255, 255, 255);</string>
                  </property>
                 </spacer>
                </item>
-               <item row="1" column="5">
-                <spacer name="horizontalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
+               <item row="2" column="5">
+                <widget class="QPushButton" name="show_login_password_btn">
+                 <property name="minimumSize">
                   <size>
-                   <width>40</width>
-                   <height>20</height>
+                   <width>35</width>
+                   <height>35</height>
                   </size>
                  </property>
-                </spacer>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(244, 236, 230);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resource.qrc">
+                   <normaloff>:/icon/icon/hide.png</normaloff>:/icon/icon/hide.png</iconset>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -3414,7 +3702,6 @@ color: rgb(255, 255, 255);</string>
   </widget>
  </widget>
  <resources>
-  <include location="resource.qrc"/>
   <include location="resource.qrc"/>
  </resources>
  <connections>

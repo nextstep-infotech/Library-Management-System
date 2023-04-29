@@ -1,17 +1,16 @@
 import sys
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QTableWidgetItem, QMessageBox, QVBoxLayout
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QTableWidgetItem, QMessageBox, QVBoxLayout, QLineEdit
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 from datetime import datetime
+import re
 
 from library_management import Ui_MainWindow
 from database import ConnectToMySQL
 
 class MainWindow(QMainWindow):
-    username = "nextstep815"
-    password = None
-    logged_in = True
     def __init__(self):
         super(MainWindow, self).__init__()
 
@@ -38,38 +37,49 @@ class MainWindow(QMainWindow):
         self.ui.add_book_btn.clicked.connect(self.add_new_book)
         self.ui.add_issue_btn.clicked.connect(self.add_new_issue)
         self.ui.login_btn.clicked.connect(self.login_method)
+        self.ui.show_hide_current_password.clicked.connect(self.show_hide_current_password_method)
+        self.ui.show_hide_new_password.clicked.connect(self.show_hide_new_password_method)
+        self.ui.show_hide_confirm_password.clicked.connect(self.show_hide_confirm_password_method)
+        self.ui.reset_password_btn.clicked.connect(self.reset_password_method)
+        self.ui.show_login_password_btn.clicked.connect(self.show_login_password_method)
+        self.show_current_password = False
+        self.show_new_password = False
+        self.show_confirm_password = False
+        self.show_login_password = False
 
-        #Plotting current data in dashboard
-        self.figure = plt.figure()
-        self.canvas = FigureCanvasQTAgg(self.figure)
-        self.ax1 = self.figure.add_subplot(111)
-        x = ['A', 'B', 'C', 'D', 'E']
-        y = [10, 7, 4, 9, 3]
-        self.ax1.bar(x, y)
-
-        # Create a second set of axes and plot the line graph
-        self.ax2 = self.ax1.twinx()
-        y2 = [2, 5, 6, 4, 8]
-        self.ax2.plot(x, y2, 'r')
-
-        self.graph_layout = QVBoxLayout()
-        self.graph_layout.addWidget(self.canvas)
-        self.ui.graph_widget.setLayout(self.graph_layout)
+        self.update_cards_and_graph()
+        self.get_admin_details()
 
     def on_login_button_clicked(self):
-        self.ui.LMS_label.setText("Login")
-        self.ui.stackedWidget.setCurrentWidget(self.ui.login_page)
+        if self.status == '0':
+            self.ui.LMS_label.setText("Login")
+            self.ui.stackedWidget.setCurrentWidget(self.ui.login_page)
+        else:
+            #log out page
+            self.reply = QMessageBox.question(self, 'Log Out', 'Are you sure you want to quit?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if self.reply == QMessageBox.Yes:
+                ConnectToMySQL().logout()
+                self.status = '0'
+                self.ui.username.setText('')
+                self.ui.password.setText('')
+                self.on_dashboard_button_clicked()
 
     def login_method(self):
         user = self.ui.username.text()
         protector = self.ui.password.text()
-        if user.lower() != "nextstep815" and protector != "Next$tep815":
-            QMessageBox.information(self, 'Username or password does not match.')
+        if user.lower() != self.username:
+            QMessageBox.information(self, 'Username does not match.')
+            return None
+        if protector != self.password:
+            QMessageBox.information(self, 'Password does not match.')
             return None
         else:
-            self.logged_in = True
+            self.status = '1'
+            ConnectToMySQL().update_login_status()
             self.ui.LMS_label.setText("Library Management System")
             self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard_page)
+            self.ui.username.setText('')
+            self.ui.password.setText('')
 
     ## Change QPushButton Checkable status when stackedWidget index changed
     def on_stackedWidget_currentChanged(self, index):
@@ -87,9 +97,10 @@ class MainWindow(QMainWindow):
     def on_dashboard_button_clicked(self):
         self.ui.LMS_label.setText("Library Management System")
         self.ui.stackedWidget.setCurrentWidget(self.ui.dashboard_page)
+        self.update_cards_and_graph()
 
     def on_teachers_button_clicked(self):
-        if self.logged_in == True:
+        if self.status == '1':
             self.ui.LMS_label.setText("Teachers")
             self.ui.stackedWidget.setCurrentWidget(self.ui.teachers_page)
             self.get_teachers_data()
@@ -99,7 +110,7 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, 'Warning', 'You are not logged in.')
 
     def on_students_button_clicked(self):
-        if self.logged_in == True:
+        if self.status == '1':
             self.ui.LMS_label.setText("Students")
             self.ui.stackedWidget.setCurrentWidget(self.ui.students_page)
             self.get_students_data()
@@ -109,7 +120,7 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, 'Warning', 'You are not logged in.')
 
     def on_books_button_clicked(self):
-        if self.logged_in == True:
+        if self.status == '1':
             self.ui.LMS_label.setText("Books")
             self.ui.stackedWidget.setCurrentWidget(self.ui.books_page)
             self.get_books_data()
@@ -119,7 +130,7 @@ class MainWindow(QMainWindow):
             QMessageBox.information(self, 'Warning', 'You are not logged in.')
 
     def on_issues_button_clicked(self):
-        if self.logged_in == True:
+        if self.status == '1':
             self.ui.LMS_label.setText("Issues")
             self.ui.stackedWidget.setCurrentWidget(self.ui.issues_page)
             self.get_issues_data()
@@ -132,8 +143,41 @@ class MainWindow(QMainWindow):
         self.ui.LMS_label.setText("Settings")
         self.ui.stackedWidget.setCurrentWidget(self.ui.settings_page)
 
+
+    # Get admin username and password
+    def get_admin_details(self):
+        result = ConnectToMySQL().get_data_for_login()
+        self.username = result[0]
+        self.password = result[1]
+        self.status = result[2]
+
     # Dashboard Page
-    
+    def update_cards_and_graph(self):
+        #Dashboard Card
+        result = ConnectToMySQL().get_all_data_counts_from_db()
+        self.ui.teachers_count_label.setText(str(result[0]))
+        self.ui.students_count_label.setText(str(result[1]))
+        self.ui.books_count_label.setText(str(result[2]))
+        self.ui.issues_count_label.setText(str(result[3]))
+
+
+        #Plotting current data in dashboard
+        self.figure = plt.figure()
+        self.canvas = FigureCanvasQTAgg(self.figure)
+        self.ax1 = self.figure.add_subplot(111)
+        result = ConnectToMySQL().get_data_for_graph()
+        x = result[0]
+        y = result[1]
+        self.ax1.bar(x, y)
+
+        # # Create a second set of axes and plot the line graph
+        # self.ax2 = self.ax1.twinx()
+        # y2 = [2, 5, 6, 4, 8]
+        # self.ax2.plot(x, y2, 'r')
+
+        self.graph_layout = QVBoxLayout()
+        self.graph_layout.addWidget(self.canvas)
+        self.ui.graph_widget.setLayout(self.graph_layout)
 
     # Teachers Page
     @pyqtSlot(bool)
@@ -367,6 +411,88 @@ class MainWindow(QMainWindow):
         ConnectToMySQL().add_teacher_data_to_db(i_book_no, i_student_id, i_issue_date, i_due_date, i_return_date, i_fine)
         self.get_teachers_data()
 
+    # Settings Page
+    def show_hide_current_password_method(self):
+        if self.show_current_password == False:
+            self.ui.current_password.setEchoMode(QLineEdit.Normal)
+            self.ui.show_hide_current_password.setIcon(QIcon('icon/show.png'))
+            self.show_current_password = True
+        else:
+            self.ui.current_password.setEchoMode(QLineEdit.Password)
+            self.ui.show_hide_current_password.setIcon(QIcon('icon/hide.png'))
+            self.show_current_password = False
+
+    def show_hide_new_password_method(self):
+        if self.show_new_password == False:
+            self.ui.new_password.setEchoMode(QLineEdit.Normal)
+            self.ui.show_hide_new_password.setIcon(QIcon('icon/show.png'))
+            self.show_new_password = True
+        else:
+            self.ui.new_password.setEchoMode(QLineEdit.Password)
+            self.ui.show_hide_new_password.setIcon(QIcon('icon/hide.png'))
+            self.show_new_password = False
+
+    def show_hide_confirm_password_method(self):
+        if self.show_confirm_password == False:
+            self.ui.confirm_password.setEchoMode(QLineEdit.Normal)
+            self.ui.show_hide_confirm_password.setIcon(QIcon('icon/show.png'))
+            self.show_confirm_password = True
+        else:
+            self.ui.confirm_password.setEchoMode(QLineEdit.Password)
+            self.ui.show_hide_confirm_password.setIcon(QIcon('icon/hide.png'))
+            self.show_confirm_password = False
+
+    def show_login_password_method(self):
+        if self.show_login_password == False:
+            self.ui.password.setEchoMode(QLineEdit.Normal)
+            self.ui.show_login_password_btn.setIcon(QIcon('icon/show.png'))
+            self.show_login_password = True
+        else:
+            self.ui.password.setEchoMode(QLineEdit.Password)
+            self.ui.show_login_password_btn.setIcon(QIcon('icon/hide.png'))
+            self.show_login_password = False
+
+    def reset_password_method(self):
+        current_pass = self.ui.current_password.text()
+        new_pass = self.ui.new_password.text()
+        confirm_pass = self.ui.confirm_password.text()
+        if current_pass != self.password:
+            QMessageBox.information(self, 'Warning', 'Current Password is incorrent.')
+            return
+        if new_pass != confirm_pass:
+            QMessageBox.information(self, 'Warning', 'New Password and Confirm Password does not match.')
+            return
+        if new_pass == "" or confirm_pass == "":
+            QMessageBox.information(self, 'Warning', 'Enter your new password and confirm password.')
+            return
+        if current_pass == new_pass:
+            QMessageBox.information(self, 'Warning', 'You have entered old password as new password. Try again.')
+            return
+        if self.validate_password(new_pass):
+            ConnectToMySQL().update_password(new_pass)
+            self.password = new_pass
+            QMessageBox.information(self, 'Information', 'Password Changed Successfully')
+            self.ui.current_password.setText('')
+            self.ui.new_password.setText('')
+            self.ui.confirm_password.setText('')
+            self.ui.LMS_label.setText("Login")
+            self.ui.stackedWidget.setCurrentWidget(self.ui.login_page)
+            QMessageBox.information(self, 'Information', 'Login with your new password.')
+
+        else:
+            QMessageBox.information(self, 'Warning', 'Pasword should contains at least 1 uppercase, 1 lowercase, 1 digit, 1 special symbol and mimimum password length should 8.')
+            return
+        
+    def validate_password(self, password):  
+        if len(password) < 8:  
+            return False  
+        if not re.search("[a-z]", password):  
+            return False  
+        if not re.search("[A-Z]", password):  
+            return False  
+        if not re.search("[0-9]", password):  
+            return False  
+        return True  
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

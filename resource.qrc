@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icon">
+    <file>icon/hide.png</file>
+    <file>icon/show.png</file>
     <file>icon/password1.png</file>
     <file>icon/user.png</file>
     <file>icon/borrow.png</file>

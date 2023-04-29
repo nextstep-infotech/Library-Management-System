@@ -21,6 +21,117 @@ class ConnectToMySQL():
             database = self.database
         )
 
+    #Login Details
+    def get_data_for_login(self):
+        try:
+            result = []
+            self.connect()
+            cursor = self.conn.cursor()
+            cursor.execute('SELECT * FROM admin')
+            data = cursor.fetchall()
+            for d in list(data[0][1:]):
+                result.append(d)
+            return result
+        
+        except Exception as e:
+            print("Failed to get data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close() 
+
+    # Update login status
+    def update_login_status(self):
+        try:
+            self.connect()
+            cursor = self.conn.cursor()
+            cursor.execute('UPDATE admin SET status = 1 WHERE status = 0;')
+            self.conn.commit()
+        except Exception as e:
+            print("Failed to udpate status.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close()
+
+    # Update password
+    def update_password(self, new):
+        try:
+            self.connect()
+            cursor = self.conn.cursor()
+            cursor.execute(f"UPDATE admin SET password = '{new}', status = '0';")
+            self.conn.commit()
+        except Exception as e:
+            print("Failed to reset password.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close()
+
+    # log out
+    def logout(self):
+        try:
+            self.connect()
+            cursor = self.conn.cursor()
+            cursor.execute('UPDATE admin SET status = 0 WHERE status = 1;')
+            self.conn.commit()
+        except Exception as e:
+            print("Failed to logout.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close()
+
+    #Dashboard Page
+    def get_all_data_counts_from_db(self):
+        try:
+            count = []
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            cursor.execute('SELECT COUNT(*) FROM teachers')
+            row_count = cursor.fetchone()
+            count.append(list(row_count.values())[0])
+
+            cursor.execute('SELECT COUNT(*) FROM students')
+            row_count = cursor.fetchone()
+            count.append(list(row_count.values())[0])
+
+            cursor.execute('SELECT COUNT(*) FROM books')
+            row_count = cursor.fetchone()
+            count.append(list(row_count.values())[0])
+
+            cursor.execute('SELECT COUNT(*) FROM issues')
+            row_count = cursor.fetchone()
+            count.append(list(row_count.values())[0])
+            return count
+        
+        except Exception as e:
+            print("Failed to get data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close()
+
+    def get_data_for_graph(self):
+        try:
+            result = []
+            self.connect()
+            cursor = self.conn.cursor()
+            cursor.execute('SELECT batch, count(*) FROM students GROUP BY batch order by batch;')
+            data = cursor.fetchall()
+            batch = [i[0] for i in data]
+            stu = [i[1] for i in data]
+            result.append(batch)
+            result.append(stu)
+            return result
+        
+        except Exception as e:
+            print("Failed to get data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close()
+                
     #Teachers Page
     def get_teachers_data_from_db(self):
         try:
@@ -37,11 +148,11 @@ class ConnectToMySQL():
             if self.conn:
                 self.conn.close()
 
-    def add_teacher_data_to_db(self,first,last,subject,contact,email,address):
+    def add_teacher_data_to_db(self,first,last,subject,contact,email,address, joined):
         try:
             self.connect()
             cursor = self.conn.cursor(dictionary = True)
-            sql = f"INSERT INTO teachers (firstname, lastname, subject, contact, email, address) VALUES ('{first}', '{last}', '{subject}', '{contact}', '{email}', '{address}')"
+            sql = f"INSERT INTO teachers (firstname, lastname, subject, contact, email, address, joineddate) VALUES ('{first}', '{last}', '{subject}', '{contact}', '{email}', '{address}', '{joined}')"
             cursor.execute(sql)
         except Exception as e:
             print("Failed to insert data.")
