@@ -834,7 +834,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="dashboard_page">
          <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1338,7 +1338,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_12">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="5,5,5,5,5,5,5,0,0">
+                <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -1354,6 +1354,23 @@ border-radius: 5px;</string>
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
+                 <item>
+                  <widget class="QPushButton" name="clear_teacher_selection_btn">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/icon/icon/eraser.png</normaloff>:/icon/icon/eraser.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>30</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
                  <item>
                   <widget class="QLineEdit" name="teacher_first_name">
                    <property name="sizePolicy">
@@ -1816,7 +1833,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_25">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="5,5,5,5,5,5,5,5,5,5,0,0">
+                <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,5,5,5,5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -1832,6 +1849,23 @@ border-radius: 5px;</string>
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
+                 <item>
+                  <widget class="QPushButton" name="clear_student_selection_btn">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/icon/icon/eraser.png</normaloff>:/icon/icon/eraser.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>30</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
                  <item>
                   <widget class="QLineEdit" name="student_first_name">
                    <property name="sizePolicy">
@@ -2411,7 +2445,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_27">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="5,5,5,5,5,5,5,0,0">
+                <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -2427,6 +2461,23 @@ border-radius: 5px;</string>
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
+                 <item>
+                  <widget class="QPushButton" name="clear_book_selection_btn">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/icon/icon/eraser.png</normaloff>:/icon/icon/eraser.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>30</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
                  <item>
                   <widget class="QLineEdit" name="book_isbn">
                    <property name="sizePolicy">
@@ -2892,7 +2943,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_28">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="5,5,5,5,5,5,5,0,0">
+                <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -2908,6 +2959,23 @@ border-radius: 5px;</string>
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
+                 <item>
+                  <widget class="QPushButton" name="clear_issue_selection_btn">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resource.qrc">
+                     <normaloff>:/icon/icon/eraser.png</normaloff>:/icon/icon/eraser.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>30</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
                  <item>
                   <widget class="QLineEdit" name="issue_book_no">
                    <property name="sizePolicy">

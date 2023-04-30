@@ -61,6 +61,12 @@ class MainWindow(QMainWindow):
         self.ui.book_table_widget.clicked.connect(self.get_book_data_to_top)
         self.ui.issue_table_widget.clicked.connect(self.get_issue_data_to_top)
 
+        #Clear data on top
+        self.ui.clear_teacher_selection_btn.clicked.connect(self.clear_teacher_data_on_top)
+        self.ui.clear_student_selection_btn.clicked.connect(self.clear_student_data_on_top)
+        self.ui.clear_book_selection_btn.clicked.connect(self.clear_book_data_on_top)
+        self.ui.clear_issue_selection_btn.clicked.connect(self.clear_issue_data_on_top)
+
         self.show_current_password = False
         self.show_new_password = False
         self.show_confirm_password = False
@@ -130,6 +136,9 @@ class MainWindow(QMainWindow):
             # Set the column width of each column
             for i in range(self.ui.teacher_table_widget.columnCount()):
                 self.ui.teacher_table_widget.setColumnWidth(i, teacher_column_width)
+            
+            #Clear all teacher line edits
+            self.clear_teacher_data_on_top()
 
             self.get_teachers_data()
         else:
@@ -148,6 +157,10 @@ class MainWindow(QMainWindow):
             # Set the column width of each column
             for i in range(self.ui.student_table_widget.columnCount()):
                 self.ui.student_table_widget.setColumnWidth(i, student_column_width)
+
+            #Clear all student line edits
+            self.clear_student_data_on_top()
+
             self.get_students_data()
         else:
             self.ui.LMS_label.setText("Login")
@@ -165,6 +178,10 @@ class MainWindow(QMainWindow):
             # Set the column width of each column
             for i in range(self.ui.book_table_widget.columnCount()):
                 self.ui.book_table_widget.setColumnWidth(i, book_column_width)
+
+            #Clear all book line edits
+            self.clear_book_data_on_top()
+
             self.get_books_data()
         else:
             self.ui.LMS_label.setText("Login")
@@ -182,7 +199,10 @@ class MainWindow(QMainWindow):
             # Set the column width of each column
             for i in range(self.ui.issue_table_widget.columnCount()):
                 self.ui.issue_table_widget.setColumnWidth(i, issue_column_width)
-                
+
+            #Clear all issue line edits
+            self.clear_issue_data_on_top()
+
             self.get_issues_data()
         else:
             self.ui.LMS_label.setText("Login")
@@ -265,6 +285,15 @@ class MainWindow(QMainWindow):
         self.ui.teacher_contact.setText(self.ui.teacher_table_widget.item(teacher_row,4).text())
         self.ui.teacher_email.setText(self.ui.teacher_table_widget.item(teacher_row,5).text())
         self.ui.teacher_address.setText(self.ui.teacher_table_widget.item(teacher_row,6).text())
+    
+    def clear_teacher_data_on_top(self):
+        #Clear all teacher line edits
+        self.ui.teacher_first_name.clear()
+        self.ui.teacher_last_name.clear()
+        self.ui.teacher_subject.clear()
+        self.ui.teacher_contact.clear()
+        self.ui.teacher_email.clear()
+        self.ui.teacher_address.clear()
 
     def add_new_teacher(self):
         t_first = self.ui.teacher_first_name.text()
@@ -382,6 +411,18 @@ class MainWindow(QMainWindow):
         self.ui.student_roll_no.setText(self.ui.student_table_widget.item(student_row,7).text())
         self.ui.student_contact.setText(self.ui.student_table_widget.item(student_row,8).text())
         self.ui.student_address.setText(self.ui.student_table_widget.item(student_row,9).text())
+
+    def clear_student_data_on_top(self):
+        #Clear all student line edits
+        self.ui.student_first_name.clear()
+        self.ui.student_last_name.clear()
+        self.ui.student_batch.clear()
+        self.ui.student_faculty.clear()
+        self.ui.student_year.clear()
+        self.ui.student_semester.clear()
+        self.ui.student_roll_no.clear()
+        self.ui.student_contact.clear()
+        self.ui.student_address.clear()
 
     def add_new_student(self):
         s_first = self.ui.student_first_name.text()
@@ -513,6 +554,14 @@ class MainWindow(QMainWindow):
         self.ui.book_category.setText(self.ui.book_table_widget.item(book_row,5).text())
         self.ui.book_quantity.setText(self.ui.book_table_widget.item(book_row,6).text())
 
+    def clear_book_data_on_top(self):
+        self.ui.book_isbn.clear()
+        self.ui.book_title.clear()
+        self.ui.book_author.clear()
+        self.ui.book_publisher.clear()
+        self.ui.book_category.clear()
+        self.ui.book_quantity.clear()
+
     def add_new_book(self):
         b_isbn = self.ui.book_isbn.text()
         if b_isbn == "":
@@ -622,6 +671,14 @@ class MainWindow(QMainWindow):
         self.ui.issue_due_date.setText(self.ui.issue_table_widget.item(issue_row,6).text())
         self.ui.issue_return_date.setText(self.ui.issue_table_widget.item(issue_row,7).text())
         self.ui.issue_fine.setText(self.ui.issue_table_widget.item(issue_row,8).text())
+
+    def clear_issue_data_on_top(self):
+        self.ui.issue_book_no.clear()
+        self.ui.issue_student_id.clear()
+        self.ui.issue_date.clear()
+        self.ui.issue_due_date.clear()
+        self.ui.issue_return_date.clear()
+        self.ui.issue_fine.clear()
 
     def add_new_issue(self):
         i_book_no = self.ui.issue_book_no.text()
