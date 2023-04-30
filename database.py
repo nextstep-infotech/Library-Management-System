@@ -162,6 +162,20 @@ class ConnectToMySQL():
                 self.conn.commit()
                 self.conn.close()
 
+    def edit_teacher_data_to_db(self,id, first,last,subject,contact,email,address, joined):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"UPDATE teachers SET firstname='{first}', lastname='{last}', subject='{subject}', contact='{contact}', email='{email}', address='{address}', joineddate='{joined}' WHERE idteachers={int(id)}"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to insert data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()
+
     #Students Page
     def get_students_data_from_db(self):
         try:
@@ -183,6 +197,20 @@ class ConnectToMySQL():
             self.connect()
             cursor = self.conn.cursor(dictionary = True)
             sql = f"INSERT INTO students (firstname, lastname, batch, faculty, year, semester, rollno, contact, address) VALUES ('{first}', '{last}', '{batch}', '{faculty}', '{year}', '{semester}', '{rollno}', '{contact}', '{address}')"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to insert data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()
+
+    def edit_student_data_to_db(self, id, first,last,batch,faculty,year,semester,rollno,contact,address):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"UPDATE students SET firstname='{first}', lastname='{last}', batch='{batch}', faculty='{faculty}', year='{year}', semester='{semester}', rollno='{rollno}', contact='{contact}', address='{address}' WHERE idstudent={int(id)}"
             cursor.execute(sql)
         except Exception as e:
             print("Failed to insert data.")
@@ -222,6 +250,20 @@ class ConnectToMySQL():
                 self.conn.commit()
                 self.conn.close()
 
+    def edit_book_data_to_db(self, id, isbn, title, author,publisher,category,quantity):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"UPDATE books SET isbn='{isbn}', title='{title}', author='{author}', publisher='{publisher}', category='{category}', quantity='{quantity}' WHERE idbooks={int(id)}"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to insert data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()
+
    #Issues Page
     def get_issues_data_from_db(self):
         try:
@@ -252,3 +294,16 @@ class ConnectToMySQL():
                 self.conn.commit()
                 self.conn.close()
 
+    def edit_issue_data_to_db(self, id, book_no, student_id, issue_date, due_date, return_date, fine):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"UPDATE issues SET book_no='{book_no}', student_id='{student_id}', issue_date='{issue_date}', due_date='{due_date}', return_date='{return_date}', fine='{fine}' WHERE idissue={int(id)}"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to insert data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()

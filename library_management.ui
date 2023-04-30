@@ -834,7 +834,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>6</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="dashboard_page">
          <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1338,7 +1338,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_12">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="5,5,5,5,5,5,5">
+                <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -1573,7 +1573,57 @@ border-radius: 5px;
 color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="text">
-                    <string>Add Teacher</string>
+                    <string>Add</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="edit_teacher_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Edit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="delete_teacher_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Delete</string>
                    </property>
                   </widget>
                  </item>
@@ -1593,13 +1643,13 @@ color: rgb(255, 255, 255);</string>
                   <bool>true</bool>
                  </attribute>
                  <attribute name="horizontalHeaderDefaultSectionSize">
-                  <number>120</number>
+                  <number>200</number>
                  </attribute>
                  <attribute name="horizontalHeaderHighlightSections">
                   <bool>true</bool>
                  </attribute>
                  <attribute name="horizontalHeaderMinimumSectionSize">
-                  <number>120</number>
+                  <number>200</number>
                  </attribute>
                  <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                   <bool>true</bool>
@@ -1619,6 +1669,21 @@ color: rgb(255, 255, 255);</string>
                  <attribute name="verticalHeaderStretchLastSection">
                   <bool>false</bool>
                  </attribute>
+                 <column>
+                  <property name="text">
+                   <string>Teacher ID</string>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
                  <column>
                   <property name="text">
                    <string>First Name</string>
@@ -1724,21 +1789,6 @@ color: rgb(255, 255, 255);</string>
                    <set>AlignCenter</set>
                   </property>
                  </column>
-                 <column>
-                  <property name="text">
-                   <string>Edit/Delete</string>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="textAlignment">
-                   <set>AlignCenter</set>
-                  </property>
-                 </column>
                 </widget>
                </item>
               </layout>
@@ -1766,7 +1816,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_25">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="5,5,5,5,5,5,5,5,5,5">
+                <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="5,5,5,5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -2088,7 +2138,57 @@ border-radius: 5px;
 color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="text">
-                    <string>Add Student</string>
+                    <string>Add</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="edit_student_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Edit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="delete_student_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Delete</string>
                    </property>
                   </widget>
                  </item>
@@ -2108,13 +2208,13 @@ color: rgb(255, 255, 255);</string>
                   <bool>true</bool>
                  </attribute>
                  <attribute name="horizontalHeaderDefaultSectionSize">
-                  <number>120</number>
+                  <number>180</number>
                  </attribute>
                  <attribute name="horizontalHeaderHighlightSections">
                   <bool>true</bool>
                  </attribute>
                  <attribute name="horizontalHeaderMinimumSectionSize">
-                  <number>120</number>
+                  <number>180</number>
                  </attribute>
                  <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                   <bool>true</bool>
@@ -2134,6 +2234,21 @@ color: rgb(255, 255, 255);</string>
                  <attribute name="verticalHeaderStretchLastSection">
                   <bool>false</bool>
                  </attribute>
+                 <column>
+                  <property name="text">
+                   <string>Student ID</string>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
                  <column>
                   <property name="text">
                    <string>First Name</string>
@@ -2269,21 +2384,6 @@ color: rgb(255, 255, 255);</string>
                    <set>AlignCenter</set>
                   </property>
                  </column>
-                 <column>
-                  <property name="text">
-                   <string>Edit/Delete</string>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="textAlignment">
-                   <set>AlignCenter</set>
-                  </property>
-                 </column>
                 </widget>
                </item>
               </layout>
@@ -2311,7 +2411,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_27">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="5,5,5,5,5,5,5">
+                <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -2564,7 +2664,57 @@ border-radius: 5px;
 color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="text">
-                    <string>Add Book</string>
+                    <string>Add</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="edit_book_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Edit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="delete_book_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Delete</string>
                    </property>
                   </widget>
                  </item>
@@ -2584,13 +2734,13 @@ color: rgb(255, 255, 255);</string>
                   <bool>true</bool>
                  </attribute>
                  <attribute name="horizontalHeaderDefaultSectionSize">
-                  <number>120</number>
+                  <number>200</number>
                  </attribute>
                  <attribute name="horizontalHeaderHighlightSections">
                   <bool>true</bool>
                  </attribute>
                  <attribute name="horizontalHeaderMinimumSectionSize">
-                  <number>120</number>
+                  <number>200</number>
                  </attribute>
                  <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                   <bool>true</bool>
@@ -2610,6 +2760,21 @@ color: rgb(255, 255, 255);</string>
                  <attribute name="verticalHeaderStretchLastSection">
                   <bool>false</bool>
                  </attribute>
+                 <column>
+                  <property name="text">
+                   <string>Book ID</string>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
                  <column>
                   <property name="text">
                    <string>ISBN</string>
@@ -2700,21 +2865,6 @@ color: rgb(255, 255, 255);</string>
                    <set>AlignCenter</set>
                   </property>
                  </column>
-                 <column>
-                  <property name="text">
-                   <string>Edit/Delete</string>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="textAlignment">
-                   <set>AlignCenter</set>
-                  </property>
-                 </column>
                 </widget>
                </item>
               </layout>
@@ -2742,7 +2892,7 @@ border-radius: 5px;</string>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_28">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="5,5,5,5,5,5,5">
+                <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="5,5,5,5,5,5,5,0,0">
                  <property name="spacing">
                   <number>10</number>
                  </property>
@@ -2995,7 +3145,63 @@ border-radius: 5px;
 color: rgb(255, 255, 255);</string>
                    </property>
                    <property name="text">
-                    <string>Add Issue</string>
+                    <string>Add</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="edit_issue_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>120</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Edit</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="delete_issue_btn">
+                   <property name="minimumSize">
+                    <size>
+                     <width>140</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777206</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(1, 29, 157);
+border-radius: 5px;
+color: rgb(255, 255, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string>Delete</string>
                    </property>
                   </widget>
                  </item>
@@ -3010,6 +3216,12 @@ color: rgb(255, 255, 255);</string>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">background-color: rgb(222, 222, 222);</string>
+                 </property>
+                 <property name="sizeAdjustPolicy">
+                  <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                 </property>
+                 <property name="gridStyle">
+                  <enum>Qt::NoPen</enum>
                  </property>
                  <attribute name="horizontalHeaderCascadingSectionResizes">
                   <bool>true</bool>
@@ -3043,6 +3255,21 @@ color: rgb(255, 255, 255);</string>
                  </attribute>
                  <column>
                   <property name="text">
+                   <string>Issue ID</string>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
                    <string>Book No.</string>
                   </property>
                   <property name="font">
@@ -3058,7 +3285,37 @@ color: rgb(255, 255, 255);</string>
                  </column>
                  <column>
                   <property name="text">
+                   <string>Book Name</string>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
                    <string>Student ID</string>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Student Name</string>
                   </property>
                   <property name="font">
                    <font>
@@ -3119,21 +3376,6 @@ color: rgb(255, 255, 255);</string>
                  <column>
                   <property name="text">
                    <string>Fine (Optional)</string>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="textAlignment">
-                   <set>AlignCenter</set>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Edit/Delete</string>
                   </property>
                   <property name="font">
                    <font>
