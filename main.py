@@ -329,7 +329,14 @@ class MainWindow(QMainWindow):
         self.get_teachers_data()
 
     def delete_selected_teacher(self):
-        pass
+        teacher_row = self.ui.teacher_table_widget.currentRow()
+        id = self.ui.teacher_table_widget.item(teacher_row,0).text()
+        self.reply = QMessageBox.question(self, 'Delete Teacher', 'Are you sure you want to delete this teacher?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if self.reply == QMessageBox.Yes:
+            ConnectToMySQL().delete_teacher_data_to_db(id)
+            self.get_teachers_data()
+        else:
+            pass
 
 
     # Students Page
@@ -462,7 +469,14 @@ class MainWindow(QMainWindow):
         self.get_students_data()
 
     def delete_selected_student(self):
-        pass
+        student_row = self.ui.student_table_widget.currentRow()
+        id = self.ui.student_table_widget.item(student_row,0).text()
+        self.reply = QMessageBox.question(self, 'Delete Student', 'Are you sure you want to delete this student?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if self.reply == QMessageBox.Yes:
+            ConnectToMySQL().delete_student_data_to_db(id)
+            self.get_students_data()
+        else:
+            pass
 
     # Books Page
     @pyqtSlot(bool)
@@ -561,7 +575,14 @@ class MainWindow(QMainWindow):
         self.get_books_data()
 
     def delete_selected_book(self):
-        pass
+        book_row = self.ui.book_table_widget.currentRow()
+        id = self.ui.book_table_widget.item(book_row,0).text()
+        self.reply = QMessageBox.question(self, 'Delete Book', 'Are you sure you want to delete this book?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if self.reply == QMessageBox.Yes:
+            ConnectToMySQL().delete_book_data_to_db(id)
+            self.get_books_data()
+        else:
+            pass
 
     # Issues Page
     @pyqtSlot(bool)
@@ -657,7 +678,14 @@ class MainWindow(QMainWindow):
         self.get_issues_data()
 
     def delete_selected_issue(self):
-        pass
+        issue_row = self.ui.issue_table_widget.currentRow()
+        id = self.ui.issue_table_widget.item(issue_row,0).text()
+        self.reply = QMessageBox.question(self, 'Delete Issue', 'Are you sure you want to delete this issue?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if self.reply == QMessageBox.Yes:
+            ConnectToMySQL().delete_issue_data_to_db(id)
+            self.get_issues_data()
+        else:
+            pass
 
     # Settings Page
     def show_hide_current_password_method(self):

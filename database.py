@@ -169,7 +169,21 @@ class ConnectToMySQL():
             sql = f"UPDATE teachers SET firstname='{first}', lastname='{last}', subject='{subject}', contact='{contact}', email='{email}', address='{address}', joineddate='{joined}' WHERE idteachers={int(id)}"
             cursor.execute(sql)
         except Exception as e:
-            print("Failed to insert data.")
+            print("Failed to edit data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()
+
+    def delete_teacher_data_to_db(self,id):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"DELETE FROM teachers WHERE idteachers={int(id)}"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to delete data.")
             print(e)
         finally:
             if self.conn:
@@ -220,6 +234,20 @@ class ConnectToMySQL():
                 self.conn.commit()
                 self.conn.close()
 
+    def delete_student_data_to_db(self,id):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"DELETE FROM students WHERE idstudent={int(id)}"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to delete data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()
+
    #Books Page
     def get_books_data_from_db(self):
         try:
@@ -264,6 +292,20 @@ class ConnectToMySQL():
                 self.conn.commit()
                 self.conn.close()
 
+    def delete_book_data_to_db(self,id):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"DELETE FROM books WHERE idbooks={int(id)}"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to delete data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()
+
    #Issues Page
     def get_issues_data_from_db(self):
         try:
@@ -302,6 +344,20 @@ class ConnectToMySQL():
             cursor.execute(sql)
         except Exception as e:
             print("Failed to insert data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.commit()
+                self.conn.close()
+
+    def delete_issue_data_to_db(self,id):
+        try:
+            self.connect()
+            cursor = self.conn.cursor(dictionary = True)
+            sql = f"DELETE FROM issues WHERE idissue={int(id)}"
+            cursor.execute(sql)
+        except Exception as e:
+            print("Failed to delete data.")
             print(e)
         finally:
             if self.conn:
