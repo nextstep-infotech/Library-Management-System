@@ -669,12 +669,8 @@ class MainWindow(QMainWindow):
                 i_id.setTextAlignment(0x0004)
                 i_book_no = QTableWidgetItem(str(item['book_no']))
                 i_book_no.setTextAlignment(0x0004)
-                self.book_name = QTableWidgetItem("Get Book name from sql")
-                self.book_name.setTextAlignment(0x0004)
                 i_student_id = QTableWidgetItem(str(item['student_id']))
                 i_student_id.setTextAlignment(0x0004)
-                self.student_name = QTableWidgetItem("Get student name from sql")
-                self.student_name.setTextAlignment(0x0004)
                 i_issue_date = QTableWidgetItem(str(item['issue_date']))
                 i_issue_date.setTextAlignment(0x0004)
                 i_due_date = QTableWidgetItem(str(item['due_date']))
@@ -686,13 +682,24 @@ class MainWindow(QMainWindow):
 
                 self.ui.issue_table_widget.setItem(row, 0, i_id)    
                 self.ui.issue_table_widget.setItem(row, 1, i_book_no)
-                self.ui.issue_table_widget.setItem(row, 2, self.book_name)
                 self.ui.issue_table_widget.setItem(row, 3, i_student_id)
-                self.ui.issue_table_widget.setItem(row, 4, self.student_name)
                 self.ui.issue_table_widget.setItem(row, 5, i_issue_date)
                 self.ui.issue_table_widget.setItem(row, 6, i_due_date)
                 self.ui.issue_table_widget.setItem(row, 7, i_return_date)
                 self.ui.issue_table_widget.setItem(row, 8, i_fine)
+
+            for row,item in enumerate(result):
+                book_cell_value = self.ui.issue_table_widget.item(row, 1).text()
+                book_names = ConnectToMySQL().get_book_data_from_db(book_cell_value)
+                self.book_name = QTableWidgetItem(book_names[0])
+                self.book_name.setTextAlignment(0x0004)
+
+                student_cell_value = self.ui.issue_table_widget.item(row, 3).text()
+                student_names = ConnectToMySQL().get_student_data_from_db(student_cell_value)
+                self.student_name = QTableWidgetItem(student_names[0])
+                self.student_name.setTextAlignment(0x0004)
+                self.ui.issue_table_widget.setItem(row, 2, self.book_name)
+                self.ui.issue_table_widget.setItem(row, 4, self.student_name)
 
         else:
             QMessageBox.information(self, 'Warning', 'Data could not be loaded. Please try again.')

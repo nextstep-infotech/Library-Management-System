@@ -363,3 +363,35 @@ class ConnectToMySQL():
             if self.conn:
                 self.conn.commit()
                 self.conn.close()
+
+
+#Special function to get book name and student name in issue page.
+    def get_book_data_from_db(self, id):
+        try:
+            self.connect()
+            cursor = self.conn.cursor()
+            sql = f"SELECT title FROM books WHERE idbooks='{id}'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            return result
+        except Exception as e:
+            print("Failed to get data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close()
+
+    def get_student_data_from_db(self, id):
+        try:
+            self.connect()
+            cursor = self.conn.cursor()
+            sql = f"SELECT CONCAT(firstname, ' ', lastname) FROM students WHERE idstudent='{id}'"
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            return result
+        except Exception as e:
+            print("Failed to get data.")
+            print(e)
+        finally:
+            if self.conn:
+                self.conn.close()
